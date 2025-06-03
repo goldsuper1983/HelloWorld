@@ -1,4 +1,5 @@
 package spacecat.learn.kotlin
+
 //Code
 //Testcase
 //Test Result
@@ -93,4 +94,70 @@ package spacecat.learn.kotlin
 //
 //0 <= s.length <= 200
 //s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
+fun main() {
+    println("outcome = ${myAtoi("-+12")}")
 
+    println("b Outcome = ${myAtoiB("-+12")}")
+}
+fun myAtoi(s: String): Int {
+//    println(s)
+//    println(Int.MAX_VALUE)
+//    println(Int.MIN_VALUE)
+    var outcome = 0L
+    var isNumFound = false
+    var isNegative = false
+    var charAt = 0
+    while (charAt < s.length) {
+        while (s[charAt] == ' '&& !isNumFound) {
+            charAt++
+            if (charAt >=s.length) return 0
+        }
+        if (s[charAt] == '-' && !isNumFound) {
+            isNumFound = true
+            isNegative = true
+            if(charAt<s.length-1) charAt++
+
+        }
+        if (s[charAt] == '+' && !isNumFound) {
+            isNumFound = true
+            if(charAt<s.length-1) charAt++
+        }
+        if (!s[charAt].isDigit() && !isNumFound) {
+            return outcome.toInt()
+        }
+        if (s[charAt].isDigit()) {
+            isNumFound = true
+            outcome = outcome * 10 + s[charAt].digitToInt()
+        }
+        if (!s[charAt].isDigit() && isNumFound) charAt = s.length
+        if (outcome > Int.MAX_VALUE)
+            return if(isNegative) Int.MIN_VALUE else Int.MAX_VALUE
+        charAt++
+    }
+    return if (isNegative) (outcome * -1).toInt() else outcome.toInt()
+}
+
+// best way on leetcode that dont have to use Long
+fun myAtoiB(s:String):Int{
+    var charAt = 0
+    val length = s.length
+    var sign = 1
+    var outcome =0
+    // check and skill all the first empty space of the string
+    while(charAt<length && s[charAt]==' ') charAt++
+
+    if(charAt<length && (s[charAt]=='-' || s[charAt]=='+'))
+    {
+        if(s[charAt]=='-') sign =-1
+        charAt++
+    }
+    while (charAt < length && s[charAt].isDigit()){
+        val number = s[charAt]-'0'
+        if(outcome > (Int.MAX_VALUE - number)/10){
+            return if(sign == -1) Int.MIN_VALUE else Int.MAX_VALUE
+        }
+        outcome = outcome*10 +number
+        charAt++
+    }
+    return outcome*sign
+}
