@@ -29,9 +29,22 @@ package spacecat.learn.kotlin
 //
 //Input: s = "A", numRows = 1
 //Output: "A"
-
+fun main(){
+    convert("PAYPALISHIRING",4)
+}
 fun convert(s: String, numRows: Int): String {
- var result:String = ""
+    var result: String = ""
+    var sLength = s.length
+    var charAt =0
+    var arrayRunner =0
+    val array2D = MutableList(numRows){ mutableListOf<Char>()}
+       while(charAt < sLength){
+           array2D[arrayRunner%numRows].add(s[charAt])
 
- return result
+           arrayRunner++
+           charAt++
+       }
+
+    println(array2D)
+    return result
 }
