@@ -6,7 +6,7 @@ fun main() {
     removeDuplicatesb(nums)
 }
 
-fun removeDuplicates(nums: IntArray): Int {
+fun removeDuplicates2(nums: IntArray): Int {
     var nonDupArrayRunner = 0
     val numsSize = nums.size - 1
     var count = 1
