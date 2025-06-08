@@ -3,7 +3,7 @@ package spacecat.learn.kotlin
 fun main(){
     val intArray = intArrayOf(1,2)
     val intArray2 = intArrayOf(7,1,5,3,6,4)
-  println(maxProfit(intArray2))
+  println(maxProfit1(intArray2))
 }
 fun maxProfit1(prices:IntArray):Int{
     var profit = 0
@@ -20,7 +20,7 @@ fun maxProfit1(prices:IntArray):Int{
     return profit
 }
 // stupid way /////////
-fun maxProfit(prices:IntArray):Int{
+fun maxProfit1s(prices:IntArray):Int{
     var profit = 0;
     for(i in 0.. prices.size){
         for(j in i+1 until prices.size){
