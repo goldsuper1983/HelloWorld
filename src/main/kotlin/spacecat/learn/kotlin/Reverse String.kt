@@ -33,5 +33,6 @@ fun reverseString(s: CharArray): Unit {
         s[i] = s[size-i]
         s[size-i] = temp
     }
+
     println(s)
 }
