@@ -4,7 +4,7 @@ fun main() {
     val nums = intArrayOf(2,2,1)
     println(getAveragesS(nums, 1).joinToString())
 }
-// this problem run better with sliding window
+// sliding window
 
 fun getAveragesS(nums: IntArray, k: Int): IntArray {
     val result = IntArray(nums.size) { -1 }
@@ -31,7 +31,7 @@ fun getAveragesS(nums: IntArray, k: Int): IntArray {
     return result
 }
 
-/// prefix Sum strategy not good for this problem
+/// prefix Sum strategy  this problem
 fun getAverages(nums: IntArray, k: Int): IntArray {
     val result = IntArray(nums.size)
     var sum = 0L
