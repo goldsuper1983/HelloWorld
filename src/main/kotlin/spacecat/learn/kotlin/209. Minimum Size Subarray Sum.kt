@@ -28,7 +28,7 @@ fun main() {
     val nums = intArrayOf(1,2,3,4,5)
     println(minSubArrayLen(11, nums))
 }
-//chat gpt way
+//chat leetcode way
 fun minSubArrayLen(target: Int, nums: IntArray): Int {
     var left = 0
     var right = 0
