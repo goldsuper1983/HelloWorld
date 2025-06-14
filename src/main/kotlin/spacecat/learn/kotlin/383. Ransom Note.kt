@@ -26,11 +26,24 @@ package spacecat.learn.kotlin
 //ransomNote and magazine consist of lowercase English letters.
 
 fun main() {
-    val ransomNote = "aa"
+    val ransomNote = "aabdeosdfsd"
     val magazine = "ab"
-    println(canConstruct(ransomNote, magazine))
+//    println(canConstruct(ransomNote, magazine))
+    println(canConstructA(ransomNote,magazine))
 }
+// do it with using array
+fun canConstructA(ransomNote: String,magazine: String):Boolean{
+    val charArray = IntArray(26)
+    for(char in ransomNote){
+        charArray[char - 'a']++
+    }
+    for(char in magazine){
+        charArray[char - 'a']--
+        if (--charArray[char - 'a'] < 0) return false
+    }
 
+    return true
+}
 /// hashmap way
 fun canConstruct(ransomNote: String, magazine: String): Boolean {
     val map = hashMapOf<Char, Int>()
@@ -44,3 +57,5 @@ fun canConstruct(ransomNote: String, magazine: String): Boolean {
     if (map.all { it.value <= 0 }) return true
     return false
 }
+
+
