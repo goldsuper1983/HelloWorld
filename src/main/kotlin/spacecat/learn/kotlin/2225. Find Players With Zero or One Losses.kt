@@ -56,8 +56,25 @@ fun main() {
     )
     println(findWinners(matches))
 }
-
+// doing using array
 fun findWinners(matches: Array<Array<Int>>): List<List<Int>> {
+    val lostResult = IntArray(10000)
+    for (match in matches) {
+        if (lostResult[match[0]] == 0) lostResult[match[0]] = -1
+        if (lostResult[match[1]] == -1) lostResult[match[1]] = 1
+        else lostResult[match[1]] += 1
+    }
+    val noLost = mutableListOf<Int>()
+    val oneLost = mutableListOf<Int>()
+    for (i in lostResult.indices) {
+        if (lostResult[i] == -1) noLost.add(i)
+        if (lostResult[i] == 1) oneLost.add(i)
+    }
+    return listOf(noLost,oneLost)
+}
+
+
+fun findWinnerss(matches: Array<Array<Int>>): List<List<Int>> {
     val mapPeopleWithLose = hashMapOf<Int, Int>()
     for (match in matches) {
         if (!mapPeopleWithLose.contains(match[0])) mapPeopleWithLose[match[0]] = 0
@@ -67,6 +84,8 @@ fun findWinners(matches: Array<Array<Int>>): List<List<Int>> {
     println(mapPeopleWithLose)
     return listOf(
         mapPeopleWithLose.filter { it.value == 0 }.map { it.key }.sorted(),
-        mapPeopleWithLose.filter { it.value == 1 }.map { it.key }.sorted())
+        mapPeopleWithLose.filter { it.value == 1 }.map { it.key }.sorted()
+    )
 }
+
 
