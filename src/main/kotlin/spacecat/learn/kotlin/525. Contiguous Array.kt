@@ -27,21 +27,23 @@ package spacecat.learn.kotlin
 //nums[i] is either 0 or 1.
 
 fun main() {
-    val nums = intArrayOf(0,0,1,1,0,1,0,0,0,1,1,1,0,1,0,1,1,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0)
+    val nums = intArrayOf(1,0,0,1,1,1,0,1,0,0)
     println(findMaxLength(nums))
 }
 fun findMaxLength(nums: IntArray): Int {
-    var numOfZero =0
-    var numOfOne =0
-    var maxResult = 0
-    for (i in nums){
-        if(i==0) numOfZero++
-        if(i==1) numOfOne++
-        if( numOfZero == numOfOne){
-            if(maxResult < numOfZero*2) maxResult = numOfZero*2
-        }
+    var result = 0
+    val map = hashMapOf<Int,Int>()
+    map[0]=-1
+    var prefixSum =0
+    for(i in nums.indices){
+        if(nums[i]==0) prefixSum-=1
+        if(nums[i]==1) prefixSum+=1
+        if(map.contains(prefixSum)){
+            if(result < i - map[prefixSum]!!) result = i - map[prefixSum]!!
+
+        }else map[prefixSum] = i
     }
-    return maxResult
+     return result
 }
 
 //fun findMaxLength(nums: IntArray): Int {
