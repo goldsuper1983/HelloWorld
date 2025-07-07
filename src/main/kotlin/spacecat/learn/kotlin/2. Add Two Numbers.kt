@@ -109,13 +109,3 @@ fun createIntListNote(int:Int): ListNode? {
     }
     return numListNodeHead
 }
-fun printListNote(listNode: ListNode?){
-        var runner = listNode
-        while (runner!=null){
-            print("${runner?.`val`}")
-            runner = runner?.next
-        }
-}
-class ListNode(var `val`: Int){
-    var next:ListNode?= null
-}
