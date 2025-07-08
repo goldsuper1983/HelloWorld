@@ -4,7 +4,7 @@ package spacecat.learn.kotlin
 fun printListNote(listNode: ListNode?){
     var runner = listNode
     while (runner!=null){
-        print("${runner?.`val`}")
+        print("[${runner?.`val`}] ")
         runner = runner?.next
     }
 }
