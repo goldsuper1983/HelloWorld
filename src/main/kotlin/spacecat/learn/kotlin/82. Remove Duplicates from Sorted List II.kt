@@ -31,7 +31,7 @@ package spacecat.learn.kotlin
  * }
  */
 fun main() {
-    val listOfNodes = arrayToListNode(intArrayOf(1, 1,1,1,1,1,1))
+    val listOfNodes = arrayToListNode(intArrayOf(1, 1, 1, 1, 2, 1, 1))
     printListNote(listOfNodes)
     println()
     printListNote(deleteDuplicates(listOfNodes))
@@ -42,21 +42,17 @@ fun deleteDuplicates(head: ListNode?): ListNode? {
     val dummyHead = ListNode(0).apply { next = head }
     var leftNode = dummyHead
     var currentNode = dummyHead.next
-    var foundDupNumber = false
+    var foundDupNumber: Boolean
     while (currentNode?.next != null) {
+        foundDupNumber = false
         while (currentNode?.next != null && currentNode?.`val` == currentNode?.next!!.`val`) {
             foundDupNumber = true
             currentNode = currentNode.next
         }
-        if (currentNode!=null && !foundDupNumber) leftNode = currentNode
-        if(currentNode!=null && foundDupNumber){
-            leftNode.next = currentNode.next
-            foundDupNumber =false
-        }
+        if (!foundDupNumber) leftNode = currentNode!!
+        else  leftNode.next = currentNode?.next
         currentNode = currentNode?.next
-
     }
-
     return dummyHead.next
 }
 
