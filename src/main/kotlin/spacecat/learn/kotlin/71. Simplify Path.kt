@@ -77,7 +77,7 @@ package spacecat.learn.kotlin
 //path is a valid absolute Unix path.
 
 fun main() {
-    val path = "/../"
+    val path = "/a/./b/../../c/d/."
     println(simplifyPath(path))
 }
 
@@ -106,8 +106,9 @@ fun simplifyPath(path: String): String {
     }
     println(currentPathEnd)
     val str = if (currentPathEnd > 0) {
-       val temp =  "/" + strArray.joinToString("/", limit = currentPathEnd)
-        temp.substring(0,temp.length-4)
+        "/" +( 0 until currentPathEnd).joinToString("/") { strArray[it].toString() }
+//       val temp =  "/" + strArray.joinToString("/", limit = currentPathEnd)
+//        temp.substring(0,temp.length-4)
     } else "/"
     return str
 }
