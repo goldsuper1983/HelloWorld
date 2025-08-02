@@ -24,9 +24,7 @@ fun makeGood(s: String): String {
     val charArray = CharArray(s.length)
     for (c in s) {
         if (i >= 0 && abs(c - charArray[i]) == r) i--
-        else {
-            charArray[++i] = c
-        }
+        else charArray[++i] = c
     }
     return String(charArray, 0, i+1)
 }
