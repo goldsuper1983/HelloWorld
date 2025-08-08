@@ -32,12 +32,12 @@ package spacecat.learn.kotlin
 //1 <= k <= nums.length
 
 fun main() {
-    val nums = intArrayOf(1,2)
+    val nums = intArrayOf(1,3,-1,-3,5,3,6,7)
     println(maxSlidingWindow(nums, k = 3).joinToString())
 }
 
 fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
-    if (nums.size <= k) {
+    if (nums.size <= 1) {
         return nums
     }
     val resultArray = IntArray(nums.size)
@@ -49,12 +49,13 @@ fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
         while (stackTail >= stackHead && nums[stack[stackTail]] <= nums[i]) stackTail--
         stackTail++
         stack[stackTail] = i
-        resultArray[resultArrayRunner++] = nums[stack[stackHead]]
+        if(i >= k-1) resultArray[resultArrayRunner++] = nums[stack[stackHead]]
+        /// remove head of the stack
         if (stack[stackHead] + k - 1 == i) stackHead++
 
 //        println(stack.joinToString())
 //        println("head = $stackHead tail = $stackTail")
 //        println(resultArray.joinToString())
     }
-    return resultArray.copyOfRange(k-1, resultArray.size)
+    return resultArray.copyOfRange(0,resultArray.size-k+1)
 }
