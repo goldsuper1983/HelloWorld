@@ -25,7 +25,6 @@ fun main(){
     val s= charArrayOf('h','e','l','l','o')
     reverseString(s)
 }
-
 fun reverseString(s: CharArray): Unit {
   val size = s.size -1
     for( i in 0 ..size/2){

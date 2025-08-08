@@ -30,13 +30,13 @@ package spacecat.learn.kotlin
 //Follow-up: Can you solve the problem in O(1) extra memory space?
 
 fun main() {
-    val linkList = arrayToListNode(intArrayOf(1, 2, 3, 4, 5,6))
+    val linkList = arrayToListNode(intArrayOf(1, 2, 3, 4, 5, 6))
     printListNote(linkList)
     printListNote(reverseKGroup(linkList, 3))
-
 }
+
 fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
-    if (k == 1) return head
+    if (head == null || k <= 1) return head
     val dummyHead = ListNode(0).apply { next = head }
     var nodeCount = 1
     var fastNode = dummyHead.next

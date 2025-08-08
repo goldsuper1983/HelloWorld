@@ -17,7 +17,6 @@ import java.lang.Math.abs
 fun main() {
     println(makeGood("abBAcC"))
 }
-
 fun makeGood(s: String): String {
     var i = -1
     val r = 'e' - 'E'
