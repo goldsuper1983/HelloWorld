@@ -34,7 +34,6 @@ fun main() {
     printListNote(linkList)
     printListNote(reverseKGroup(linkList, 3))
 }
-
 fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
     if (head == null || k <= 1) return head
     val dummyHead = ListNode(0).apply { next = head }
