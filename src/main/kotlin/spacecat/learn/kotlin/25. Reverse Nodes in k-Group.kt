@@ -29,28 +29,37 @@ package spacecat.learn.kotlin
 //
 //Follow-up: Can you solve the problem in O(1) extra memory space?
 
-fun main(){
-    val linkList = arrayToListNode(intArrayOf(1, 2,3,4,5,6,7))
+fun main() {
+    val linkList = arrayToListNode(intArrayOf(1, 2, 3, 4, 5,6))
     printListNote(linkList)
-    println()
-    printListNote(reverseKGroup(linkList,9))
+    printListNote(reverseKGroup(linkList, 3))
 
 }
 fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
+    if (k == 1) return head
     val dummyHead = ListNode(0).apply { next = head }
-    var currentNode = dummyHead.next
     var nodeCount = 1
     var fastNode = dummyHead.next
-    var count = 0
-    while (count <= k){
-        println(fastNode?.`val`)
-        fastNode = fastNode?.next
-        if (fastNode!=null) return dummyHead.next
-        count++
+    var preSubListHeadNode = dummyHead
+    while (fastNode?.next != null) {
+        fastNode = fastNode.next
+        nodeCount++
+        if (nodeCount == k) {
+            fastNode = fastNode?.next
+            nodeCount = 1
+            var currentNode = preSubListHeadNode.next
+            val subListHead = preSubListHeadNode.next
+            var preNode = fastNode
+            for (i in 0 until k) {
+                val temp = currentNode?.next
+                currentNode?.next = preNode
+                preNode = currentNode
+                currentNode = temp
+            }
+            preSubListHeadNode.next = preNode
+            preSubListHeadNode = subListHead!!
+//            println(printListNote(dummyHead.next))
+        }
     }
-
-//    while (fastNode!=null){
-//
-//    }
     return dummyHead.next
 }

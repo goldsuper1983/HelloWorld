@@ -7,6 +7,7 @@ fun printListNote(listNode: ListNode?){
         print("[${runner?.`val`}] ")
         runner = runner?.next
     }
+    println()
 }
 fun arrayToListNode(arr : IntArray): ListNode? {
     if(arr.isEmpty()) return null
