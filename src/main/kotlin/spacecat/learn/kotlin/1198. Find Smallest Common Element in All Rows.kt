@@ -24,5 +24,5 @@ package spacecat.learn.kotlin
 //1 <= mat[i][j] <= 104
 //mat[i] is sorted in strictly increasing order.
 fun main(){
-
+    val mat = intArrayOf()
 }
